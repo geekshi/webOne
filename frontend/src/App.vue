@@ -1,20 +1,20 @@
 <template>
     <div>
-        <StockInfo></StockInfo>
+        <StockPull></StockPull>
         <hr />
-        <StockPrice></StockPrice>
+        <StockPush></StockPush>
     </div>
 </template>
 
 <script>
-    import StockInfo from './components/StockInfo.vue'
-    import StockPrice from './components/StockPrice.vue'
+    import StockPull from './components/StockPull.vue'
+    import StockPush from './components/StockPush.vue'
 
     export default {
         name:'App',
         components:{
-            StockInfo,
-            StockPrice
+            StockPull,
+            StockPush
         }
     }
 </script>
