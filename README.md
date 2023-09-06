@@ -7,4 +7,4 @@ Frontend technology stack includes HTML, CSS, JavaScript, Vue.js. Backend techno
 
 ## Frontend page
 
-![Frontend page](/doc/page.gif)
+![image](/doc/page.GIF)
