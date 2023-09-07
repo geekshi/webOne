@@ -4,7 +4,7 @@ Frontend technology stack includes HTML, CSS, JavaScript, Vue.js. Backend techno
 ## Overview
 Vue.js calls the API and the API first checks the data from the cache. If the data is not in the cache, it then queries the database and updates the cache.
 
-When the producer publishes the new data and sends to the MQ, the consumer receives the data and pushes the data to Vue.js, and updates the data to the database simultaneously.
+When the producer publishes the new data and sends to the MQ, the consumer receives the data from the MQ and pushes the data to Vue.js, and updates the data to the database simultaneously.
 
 ![Overview](/doc/overview.png)
 
