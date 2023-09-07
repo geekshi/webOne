@@ -26,15 +26,14 @@ public class MessageConsumer {
     @RabbitListener(queues = {RabbitmqConfig.QUEUE_INFORM_STOCK_UPDATE})
     public void messageHandler(Object msg, Message message, Channel channel) throws UnsupportedEncodingException {
         String parsedMsg = new String(message.getBody(),"utf-8");
-        log.info("receive message: {}", parsedMsg);
+        log.info("Receive message: {}", parsedMsg);
         webSocketServer.sendInfo(parsedMsg);
         Stock stock = new Stock("004", "HSBC", Double.valueOf(parsedMsg));
         int resultCount = stockService.updateStock(stock);
         if(resultCount != 1) {
-            log.error("Update database failed, so won't update redis");
-            return;
+            log.error("Update the database failed");
+        }else {
+            log.info("Update the database done");
         }
-        redisTemplate.opsForValue().set("004", stock);
-        log.info("update redis done");
     }
 }
