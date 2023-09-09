@@ -33,7 +33,8 @@ public class MessageConsumer {
         if(resultCount != 1) {
             log.error("Update the database failed");
         }else {
-            log.info("Update the database done");
+            log.info("Updated the database, delete the key");
+            redisTemplate.delete("004");
         }
     }
 }

@@ -16,7 +16,7 @@ public class StockService {
     private StockMapper stockMapper;
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;;
+    private RedisTemplate<String, Object> redisTemplate;
 
     public List<Stock> getStocks() {
         return stockMapper.getAllStocks();
@@ -33,8 +33,10 @@ public class StockService {
         }else {
             log.info("Didn't find the stock from the cache, fetch from the database and set to the cache");
             stock = stockMapper.getStockByCode(code);
-            redisTemplate.opsForValue().set(stock.getCode(), stock);
-            redisTemplate.expire(stock.getCode(), 1, TimeUnit.MINUTES);
+            if(stock != null) {
+                redisTemplate.opsForValue().set(stock.getCode(), stock);
+                redisTemplate.expire(stock.getCode(), 1, TimeUnit.MINUTES);
+            }
         }
         return stock;
     }
